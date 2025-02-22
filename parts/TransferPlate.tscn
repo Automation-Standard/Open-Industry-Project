@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2dtp6027bo87"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61vnj"]
+albedo_color = Color(0, 0.443137, 0.878431, 1)
+metallic_specular = 0.1
+roughness = 0.25
+
+[sub_resource type="PrismMesh" id="PrismMesh_61vnj"]
+material = SubResource("StandardMaterial3D_61vnj")
+size = Vector3(0.3, 0.1, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_61vnj"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61vnj"]
+size = Vector3(0.3, 0.01, 1)
+
+[node name="TransferPlate" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.524, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.07, 0)
+mesh = SubResource("PrismMesh_61vnj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+physics_material_override = SubResource("PhysicsMaterial_61vnj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000426024, 0.225046, 0)
+shape = SubResource("BoxShape3D_61vnj")
